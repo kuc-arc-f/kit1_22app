@@ -1,4 +1,4 @@
-
+export const ssr = false;
 import { error } from '@sveltejs/kit';
 import HttpCommon from '$lib/HttpCommon';
 //

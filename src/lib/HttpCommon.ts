@@ -2,7 +2,6 @@
 import LibConfig from './LibConfig';
 import { PUBLIC_API_KEY } from '$env/static/public'
 import { PUBLIC_API_URL } from '$env/static/public'
-//import { PUBLIC_INTERNAL_URL } from '$env/static/public'
 //
 const HttpCommon = {
   /**

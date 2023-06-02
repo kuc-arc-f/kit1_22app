@@ -56,3 +56,7 @@ yarn build
 ***
 ### Blog:
 
+https://zenn.dev/knaka0209/books/a7dd4a9b5b636f
+
+***
+

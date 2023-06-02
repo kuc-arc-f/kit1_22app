@@ -8,7 +8,7 @@ import { goto } from '$app/navigation';
 import LibDbSession from '$lib/LibDbSession';
 import LibConfig from '$lib/LibConfig';
 import LibCookie from '$lib/LibCookie';
-import { PUBLIC_BASIC_AUTH_USER, PUBLIC_BASIC_AUTH_PASSWORD } from '$env/static/public'
+//import { PUBLIC_BASIC_AUTH_USER, PUBLIC_BASIC_AUTH_PASSWORD } from '$env/static/public'
 import { PUBLIC_API_KEY } from '$env/static/public';
 
 /**
@@ -42,7 +42,7 @@ console.log(json);
 		if(json.ret === LibConfig.OK_CODE) {
             const key = LibConfig.COOKIE_KEY_USER;  
             await LibCookie.set_cookie(key, json.data.id);            
-//			goto(`/`);
+			goto(`/`);
 		} else {
             alert("Error, Login");
         }

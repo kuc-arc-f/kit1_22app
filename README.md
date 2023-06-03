@@ -13,6 +13,11 @@
 
 SvelteKit + Cloudflare D1, app sample, todo, plan, er-chart, task
 
+* todo : todo app, markdown input
+* plan : schedule input
+* er-chart : mermaid.js use, Er Chart create
+* task: project, task List add
+
 ***
 ### API Server
 

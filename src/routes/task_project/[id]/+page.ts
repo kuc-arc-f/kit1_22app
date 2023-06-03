@@ -20,7 +20,7 @@ export async function load({ params}) {
     let postItem: any = {
       "id": params.id
     }; 
-    const json = await HttpCommon.server_post(postItem, "/plan/get");
+    const json = await HttpCommon.server_post(postItem, "/project/get");
 console.log(json);
     return {
         id: params.id,

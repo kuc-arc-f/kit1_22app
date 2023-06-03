@@ -1,4 +1,4 @@
-export const ssr = false;
+//export const ssr = false;
 //import { goto } from '$app/navigation';
 import LibCookie from '$lib/LibCookie';
 import LibConfig from '$lib/LibConfig';

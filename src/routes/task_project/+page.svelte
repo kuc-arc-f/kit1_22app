@@ -22,7 +22,7 @@ console.log(data);
 		const postItem = {
 			userId: 0
 		}		
-		const json = await HttpCommon.server_post(postItem, "/todos/get_list");
+		const json = await HttpCommon.server_post({}, "/project/get_list");
     console.log(json);  
 		data.items = json.data;		
 	} catch (e) {
@@ -34,25 +34,24 @@ startProc();
 </script>
 
 <div class="container my-2">
-	<h1>Todo</h1>
+	<h1>project</h1>
 	<p>markdown diplay, OK</p>
 	<hr />
-	<a href={`/todo/create`} class="btn btn-primary">Create
+	<a href={`/task_project/create`} class="btn btn-primary">Create
 	</a>
   
 	<hr />
 	{#each data.items as item}
 	<div>
-		<h3>{item.title}</h3>
+		<h3>{item.name}</h3>
 		<p>ID : {item.id}</p>
-		<a href={`/todo/${item.id}`} class="btn btn-outline-primary">Show
+		<a href={`/task_project/${item.id}`} class="btn btn-outline-primary">Show
 		</a>
-		<a href={`/todo/edit/${item.id}`} class="btn">[ Edit ]
-		</a>					
 		<hr />
 	</div>
 	{/each}	
 </div>
 <!-- 
-	
+		<a href={`/task_project/edit/${item.id}`} class="btn">[ Edit ]
+		</a>					
 -->

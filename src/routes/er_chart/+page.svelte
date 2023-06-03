@@ -20,10 +20,10 @@ console.log(data);
  const startProc = async function () {
 	try {
 		const postItem = {
-			userId: 0
+			userId: LibAuth.getUserId(),
 		}		
-		const json = await HttpCommon.server_post(postItem, "/todos/get_list");
-    console.log(json);  
+		const json = await HttpCommon.server_post(postItem, "/er_chart/get_list");
+console.log(json);  
 		data.items = json.data;		
 	} catch (e) {
       console.error(e);
@@ -31,13 +31,18 @@ console.log(data);
 }
 console.log("#start: /test");
 startProc();
+//
+const nextPage = function(id) {
+	console.log("id= ",id);
+	location.href = `/er_chart/${id}`;
+} 
 </script>
 
 <div class="container my-2">
-	<h1>Todo</h1>
-	<p>markdown diplay, OK</p>
+	<h1>ErChart</h1>
+	<p>mermaid.js display possible.</p>
 	<hr />
-	<a href={`/todo/create`} class="btn btn-primary">Create
+	<a href={`/er_chart/create`} class="btn btn-primary">Create
 	</a>
   
 	<hr />
@@ -45,14 +50,16 @@ startProc();
 	<div>
 		<h3>{item.title}</h3>
 		<p>ID : {item.id}</p>
-		<a href={`/todo/${item.id}`} class="btn btn-outline-primary">Show
+		<button on:click={nextPage(item.id)} class="btn btn-outline-primary" 
+		>Show</button>					
+		<a href={`/er_chart/edit/${item.id}`} class="btn">[ Edit ]
 		</a>
-		<a href={`/todo/edit/${item.id}`} class="btn">[ Edit ]
-		</a>					
 		<hr />
 	</div>
 	{/each}	
 </div>
 <!-- 
+		<a href={`/er_chart/${item.id}`} class="btn btn-outline-primary">Show
+		</a>
 	
 -->

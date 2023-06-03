@@ -28,6 +28,14 @@
 			<li aria-current={$page.url.pathname === '/plan' ? 'page' : undefined}>
 				<a href="/plan">Plan</a>
 			</li>
+			<!--
+			<li aria-current={$page.url.pathname === '/task_project' ? 'page' : undefined}>
+				<a href="/task_project">Task</a>
+			</li>
+			-->
+			<li aria-current={$page.url.pathname === '/er_chart' ? 'page' : undefined}>
+				<a href="/er_chart">ErChart</a>
+			</li>
 			<li aria-current={$page.url.pathname === '/login' ? 'page' : undefined}>
 				<a href="/login">Login</a>
 			</li>

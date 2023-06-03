@@ -1,17 +1,8 @@
+
 export const ssr = false;
 
 import { error } from '@sveltejs/kit';
-import LibConfig from '$lib/LibConfig';
-import LibAuth from '$lib/LibAuth';
 import HttpCommon from '$lib/HttpCommon';
-//type
-type IPostItem = {
-  id: number,
-  title : string,
-  content : string,
-  category : string,
-  createdAt: string,
-}
 //
 /** @type {import('./$types').PageLoad} */
 export async function load({ params}) {
@@ -20,7 +11,7 @@ export async function load({ params}) {
     let postItem: any = {
       "id": params.id
     }; 
-    const json = await HttpCommon.server_post(postItem, "/plan/get");
+    const json = await HttpCommon.server_post(postItem, "/er_chart/get");
 console.log(json);
     return {
         id: params.id,
@@ -32,5 +23,3 @@ console.log(json);
   }
 //    throw error(404, 'Not found');
 }
-/*
-*/

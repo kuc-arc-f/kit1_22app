@@ -6,12 +6,12 @@
 
  date    : 2023/06/01
 
- update  : 2023/06/02
+ update  : 2023/06/03
  
 ***
 ### Summary
 
-SvelteKit + Cloudflare D1, app sample, todo, plan
+SvelteKit + Cloudflare D1, app sample, todo, plan, er-chart
 
 ***
 ### API Server

@@ -11,7 +11,7 @@
 ***
 ### Summary
 
-SvelteKit + Cloudflare D1, app sample, todo, plan, er-chart
+SvelteKit + Cloudflare D1, app sample, todo, plan, er-chart, task
 
 ***
 ### API Server

@@ -9,6 +9,8 @@ const LibConfig = {
   SESSION_KEY_USER: "user",
   SESSION_KEY_CHAT_POST: "chat_posts",
   //cookie
-  COOKIE_KEY_USER: "kit22_user"
+  COOKIE_KEY_USER: "kit22_user",
+  COOKIE_KEY_AUTH: "kit22_user_auth",
+  COOKIE_KEY_SESSION: "kit22_session",  
 }
 export default LibConfig;

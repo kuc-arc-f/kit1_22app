@@ -5,9 +5,9 @@
 
 <script lang="ts">
 import { goto } from '$app/navigation';
-import LibDbSession from '$lib/LibDbSession';
 import LibConfig from '$lib/LibConfig';
 import LibCookie from '$lib/LibCookie';
+import Session from '$lib/Session';
 //import { PUBLIC_BASIC_AUTH_USER, PUBLIC_BASIC_AUTH_PASSWORD } from '$env/static/public'
 import { PUBLIC_API_KEY } from '$env/static/public';
 
@@ -38,11 +38,16 @@ console.log(password?.value);
 			body: body
 		});
 		const json = await res.json()
-console.log(json);
+//console.log(json);
 		if(json.ret === LibConfig.OK_CODE) {
             const key = LibConfig.COOKIE_KEY_USER;  
-            await LibCookie.set_cookie(key, json.data.id);            
-			goto(`/`);
+            await LibCookie.set_cookie(key, json.data.id); 
+            const sessionKey = LibConfig.SESSION_KEY_USER; 
+            let resulte = await Session.put(sessionKey, JSON.stringify(json.data)); 
+console.log(resulte);
+            if(resulte) {
+    			goto(`/`);
+            }                       
 		} else {
             alert("Error, Login");
         }

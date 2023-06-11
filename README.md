@@ -42,6 +42,19 @@ PUBLIC_API_KEY="hoge123"
 ```
 
 ***
+* (option) send mail
+
+```
+# MAIL
+PUBLIC_SMTP_HOST = "test.com"
+PUBLIC_SMTP_PORT = 465
+PUBLIC_SMTP_SECURE = true
+PUBLIC_SMTP_AUTH_USER = "hoge"
+PUBLIC_SMTP_AUTH_PASS = ""
+PUBLIC_FROM_MAIL_ADDRESS = "from@test.com"
+```
+
+***
 ### Start server
 * start :
 

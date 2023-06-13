@@ -7,7 +7,7 @@
 import { marked } from 'marked';
 import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
-//import LibCommon from '$lib/LibCommon';
+import LibCommon from '$lib/LibCommon';
 import HttpCommon from '$lib/HttpCommon';
 //
 /** @type {import('./$types').PageData} */
@@ -15,6 +15,8 @@ export let data: any, item: any= {}, post_id = 0, content = "";
 //
 console.log("[id=", data.id);
 //console.log(data.item);
+const createdAt = LibCommon.converDateString(data.item.createdAt);
+//console.log(createdAt);
 content = data.item.content;
 content = marked.parse(content);
 console.log(content);
@@ -58,7 +60,8 @@ console.log(json);
 <!-- MarkUp -->
 <div class="container my-2">
     <h1>{data.item.title}</h1>
-    ID: {data.item.id}
+    <p>ID: {data.item.id}</p>
+    {createdAt}
     <hr />
     {@html content}
     <hr />

@@ -43,7 +43,7 @@ const addPost = async function () {
 			title: title?.value,
 			content : content?.value,
 			completed: 0,
-			userId:  0,
+			userId:  LibAuth.getUserId(),
 		}
 //console.log(item);
 		const json = await HttpCommon.server_post(item, '/todos/create');

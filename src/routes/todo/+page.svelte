@@ -24,7 +24,7 @@ console.log(data);
 const startProc = async function () {
     try {
         const postItem = {
-            userId: 0
+            userId: LibAuth.getUserId(),
         }		
         const json = await HttpCommon.server_post(postItem, "/todos/get_list");
     console.log(json);  

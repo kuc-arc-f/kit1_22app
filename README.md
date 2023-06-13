@@ -24,6 +24,18 @@ SvelteKit + Cloudflare D1, app sample, todo, plan, er-chart, task
 https://github.com/kuc-arc-f/d1-project8git
 
 ***
+### Screen
+
+* plan
+
+![img](https://img-static-kuc.netlify.app/img/front_2023/svelte/ss-plan-0614.png)
+
+* er-chart
+
+![img](https://img-static-kuc.netlify.app/img/front_2023/svelte/ss-erchart-0614.png)
+
+
+***
 ### Setup
 
 ```

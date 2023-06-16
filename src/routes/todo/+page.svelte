@@ -28,7 +28,6 @@ const startProc = async function () {
         }		
         const json = await HttpCommon.server_post(postItem, "/todos/get_list");
     console.log(json);  
-//        items = json.data;
         itemsAll = json.data;
         items = await TodoIndex.getPageList(itemsAll, itemPage, perPage);		
     } catch (e) {
@@ -37,6 +36,20 @@ const startProc = async function () {
 }
 console.log("#start: /test");
 startProc();
+//
+const search = async function() {
+    console.log("search");
+    itemsAll = await TodoIndex.search();
+    items = await TodoIndex.getPageList(itemsAll, itemPage, perPage);
+console.log(items);
+}
+//
+const clearSearch = async function() {
+//    console.log("search");
+  const seachKey = (<HTMLInputElement>document.querySelector("#searchKey"));
+  seachKey.value = "";
+  startProc();
+}
 /**
 * parentUpdateList
 * @param
@@ -53,12 +66,26 @@ const parentUpdateList = async function(page: number) {
 
 <!-- MarkUp -->
 <div class="container my-2">
-    <h1>Todo</h1>
-    <p>markdown diplay, OK</p>
-    <hr />
-    <a href={`/todo/create`} class="btn btn-primary">Create
-    </a>
-
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Todo</h1>
+        <p>markdown display possible.</p>
+      </div>
+      <div class="col-md-6 text-end">
+        <a href={`/todo/create`} class="btn btn-primary">Create</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-end">
+        <button class="btn btn-sm btn-outline-primary"  on:click={clearSearch}
+        >Clear</button>
+        <span class="search_key_wrap">
+          <input type="text" size="24" class="mx-2" name="searchKey" id="searchKey"
+           placeholder="Title search">
+        </span>
+        <button class="btn btn-sm btn-outline-primary" on:click={search}>Search</button>      
+      </div>
+    </div>     
     <hr />
     {#each items as item}
     <div>

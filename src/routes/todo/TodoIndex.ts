@@ -1,6 +1,6 @@
-//import LibDbSession from '$lib/LibDbSession';
 import LibPagenate from '$lib/LibPagenate';
-import { PUBLIC_API_URL } from '$env/static/public'
+import LibAuth from '$lib/LibAuth';
+import HttpCommon from '$lib/HttpCommon';
 //
 const TodoIndex = {
   /**
@@ -23,6 +23,32 @@ console.log(pinfo);
     } catch (e) {
       console.error(e);
     }
-  },  
+  },
+  /**
+  *
+  * @param
+  *
+  * @return
+  */  
+  search :async function (): Promise<any>
+  {
+    try{
+      const seachKey = (<HTMLInputElement>document.querySelector("#searchKey")).value;
+      const postItem = {
+        userId: LibAuth.getUserId(),
+        seachKey: seachKey,
+      }
+console.log(postItem); 
+      const json = await HttpCommon.server_post(postItem, "/todos/search");
+console.log(json);      
+      let items: any[] = [];
+      items = json.data;
+console.log(items);
+      return items;
+    } catch (e) {
+      console.error(e);
+      throw new Error("Error, search");
+    } 
+  },     
 }
 export default TodoIndex;

@@ -1,5 +1,6 @@
 import LibConfig from '../LibConfig';
 import Session from './ServerSession';
+import ServerKV from './ServerKV';
 //
 const Auth = {
   /**
@@ -22,11 +23,11 @@ const Auth = {
     }
   },
   /**
- *
- * @param key: any
- *
- * @return
- */
+   *
+   * @param key: any
+   *
+   * @return
+   */
   sessionValidate: async function(cookies: any):Promise<any>
   {
     try {
@@ -50,5 +51,34 @@ const Auth = {
       console.error(e);
     }
   }, 
+  /**
+   *
+   * @param key: any
+   *
+   * @return
+   */
+  kvValidate: async function(cookies: any):Promise<any>
+  {
+    try {
+      let ret = false;
+      const key = LibConfig.COOKIE_KEY_SESSION;
+      const sessionId = cookies.get(key);
+//console.log("sid=", sessionId);
+      if(!sessionId) {
+        console.error('Error , Auth.kvValidate sessionId nothing ');
+        return ret;
+      }
+      const obj = await  ServerKV.get(LibConfig.SESSION_KEY_USER, sessionId);
+//console.log(obj);
+      if(!obj.id) {
+        console.error('Error , nothing obj.id');
+        return ret;
+      }
+      ret = true;
+      return ret;
+    } catch (e) {
+      console.error(e);
+    }
+  },  
 }
 export default Auth;

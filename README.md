@@ -6,7 +6,7 @@
 
  date    : 2023/06/01
 
- update  : 2023/06/15 
+ update  : 2023/06/17 
  
 ***
 ### Summary
@@ -41,16 +41,18 @@ https://github.com/kuc-arc-f/d1-project8git
 ```
 npm install
 ```
+
 ***
 ### Setup: .env
 
 * PUBLIC_API_URL: API
 * PUBLIC_API_KEY
-
+* KV (option) PUBLIC_KV_URL,PUBLIC_KV_KEY
 ```
-
 PUBLIC_API_URL=http://localhost:8787
 PUBLIC_API_KEY="hoge123"
+PUBLIC_KV_URL=https://hoge.com
+PUBLIC_KV_KEY=""
 ```
 
 ***

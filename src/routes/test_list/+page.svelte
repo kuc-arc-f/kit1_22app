@@ -41,10 +41,6 @@ console.log(data);
 console.log(item);
 		const json = await HttpCommon.server_post(item, '/test/create');
 console.log(json);
-//	if (json.ret ===  LibConfig.OK_CODE) {
-//        ret = true;
-//      } 		
-//		goto(`/crud`);
 	} catch (e) {
       console.error(e);
       alert("error, add");
@@ -60,13 +56,20 @@ console.log(json);
     <ul>
         <li>
             <a href="/test">Test</a>
+            <hr class="my-1" />
         </li>    
         <li>
             <a href="/test3">Test3: excel</a>
+            <hr class="my-1" />
         </li>   
         <li>
-            <a href="/test4">Test4</a>
-        </li>          
+            <a href="/test4">Test4: PDF</a>
+            <hr class="my-1" />
+        </li>
+        <li>
+            <a href="/test6">Test6: modal</a>
+            <hr class="my-1" />
+        </li>
     </ul>
 </div>
 

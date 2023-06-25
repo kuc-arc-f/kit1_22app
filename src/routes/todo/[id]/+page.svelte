@@ -64,11 +64,9 @@ console.log(json);
     {createdAt}
     <hr />
     {@html content}
-    <hr />
-    <button on:click={deleteItem} class="btn btn-danger my-2">Delete</button>
 </div>
 
 <!--
-<hr class="my-1" />
-name: {data.item.title}
+<hr />
+<button on:click={deleteItem} class="btn btn-danger my-2">Delete</button>
 -->

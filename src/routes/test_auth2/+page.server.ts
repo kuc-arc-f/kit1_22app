@@ -8,6 +8,7 @@ import Auth from '$lib/server/Auth';
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ cookies, params }) {
     const result = await Auth.sessionValidate(cookies);
+console.log(result);
     if(!result) {
       console.error("error, Auth.sessionValidate");
       throw redirect(303, "/login");

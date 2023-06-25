@@ -45,10 +45,12 @@ npm install
 ***
 ### Setup: .env
 
+* PUBLIC_SYSTEM_NAME
 * PUBLIC_API_URL: API
 * PUBLIC_API_KEY
 * KV (option) PUBLIC_KV_URL,PUBLIC_KV_KEY
 ```
+PUBLIC_SYSTEM_NAME = "systemName"
 PUBLIC_API_URL=http://localhost:8787
 PUBLIC_API_KEY="hoge123"
 PUBLIC_KV_URL=https://hoge.com

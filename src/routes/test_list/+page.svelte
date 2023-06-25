@@ -51,7 +51,7 @@ console.log(json);
 
 <!-- MarkUp -->
 <div class="text-column">
-	<h1>TestList</h1>
+	<h3>TestList</h3>
 	<hr />
     <ul>
         <li>
@@ -71,6 +71,19 @@ console.log(json);
             <hr class="my-1" />
         </li>
     </ul>
+	<hr />
+    <h3>Testauth</h3>
+    <ul>
+        <li>
+            <a href="/test_auth2">test_auth2: sessionValidate</a>
+            <hr class="my-1" />
+        </li>    
+        <li>
+            <a href="/test_auth3">test_auth3 :KV auth</a>
+            <hr class="my-1" />
+        </li>    
+    </ul>
+
 </div>
 
 <!--

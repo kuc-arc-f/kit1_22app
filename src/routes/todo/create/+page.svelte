@@ -6,11 +6,13 @@
 <script lang="ts">
 import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
+import ModalComplete from '$lib/components/ModalComplete.svelte';
 import { goto } from '$app/navigation';
 import { PUBLIC_API_URL } from '$env/static/public'
 import HttpCommon from '$lib/HttpCommon';
 /** @type {import('./$types').PageData} */
 export let data;
+let messageModal = "";
 console.log(data);
 
 /**
@@ -21,6 +23,12 @@ console.log(data);
  */ 
  const startProc = async function () {
 	try {
+        //modal
+        MicroModal.init({
+            disableScroll: true,
+            awaitOpenAnimation: true,
+            awaitCloseAnimation: true
+        });		
 	} catch (e) {
       console.error(e);
     }	
@@ -49,12 +57,19 @@ const addPost = async function () {
 		const json = await HttpCommon.server_post(item, '/todos/create');
 console.log(json);
 		if(json.ret === 'OK') {
-			goto(`/todo`);
+			messageModal = "Success, save todo";
+			MicroModal.show('modal-1');
+//			goto(`/todo`);
 		}
 	} catch (e) {
       console.error(e);
       alert("error, add");
     }
+}
+//
+const okFunction = function () {
+//    alert("okFunction");
+    window.location.href = '/todo';
 }
 </script>
 
@@ -78,4 +93,5 @@ console.log(json);
 	<hr className="mt-2 mb-2" />
 	<button on:click={addPost} class="btn btn-primary my-2">Add</button>
 	<hr />
+	<ModalComplete bind:message={messageModal} okFunction={okFunction} />
 </div>

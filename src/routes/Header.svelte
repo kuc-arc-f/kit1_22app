@@ -22,9 +22,6 @@
 			<li aria-current={$page.url.pathname === '/test_list' ? 'page' : undefined}>
 				<a href="/test_list">Test</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/test_auth3' ? 'page' : undefined}>
-				<a href="/test_auth3">testAuth</a>
-			</li>
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
@@ -56,8 +53,8 @@
 	</div>
 </header>
 <!--
-<li aria-current={$page.url.pathname === '/crud' ? 'page' : undefined}>
-<a href="/crud">crud</a>
+<li aria-current={$page.url.pathname === '/test_auth3' ? 'page' : undefined}>
+	<a href="/test_auth3">testAuth</a>
 </li>
 -->
 

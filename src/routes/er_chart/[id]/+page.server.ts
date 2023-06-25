@@ -1,7 +1,7 @@
 export const csr = false;
 import { error } from '@sveltejs/kit';
-import LibConfig from '$lib/LibConfig';
-import LibAuth from '$lib/LibAuth';
+//import LibConfig from '$lib/LibConfig';
+//import LibAuth from '$lib/LibAuth';
 import HttpCommon from '$lib/HttpCommon';
 
 /** @type {import('./$types').PageServerLoad} */

@@ -7,7 +7,6 @@
 import { onMount } from 'svelte';
 /** @type {import('./$types').PageData} */
 export let data;
-//console.log("#data");
 //console.log(data);
 //
 const testFunc = function () {

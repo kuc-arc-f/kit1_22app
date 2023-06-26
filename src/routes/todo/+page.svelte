@@ -46,6 +46,7 @@ console.log(items);
 //
 const clearSearch = async function() {
 //    console.log("search");
+  itemPage = 1;
   const seachKey = (<HTMLInputElement>document.querySelector("#searchKey"));
   seachKey.value = "";
   startProc();

@@ -89,11 +89,10 @@ const parentUpdateList = async function(page: number) {
     <hr />
     {#each items as item}
     <div>
-        <h3>{item.title}</h3>
+        <a href={`/todo/${item.id}`} ><h3>{item.title}</h3>
+        </a>         
         <span class="mx-2">ID : {item.id}</span>
-        <a href={`/todo/${item.id}`} class="btn btn-outline-primary">Show
-        </a>
-        <a href={`/todo/edit/${item.id}`} class="btn">[ Edit ]
+        <a href={`/todo/edit/${item.id}`} class="btn btn-sm btn-outline-primary mx-2">Edit
         </a>					
         <hr />
     </div>
@@ -101,5 +100,7 @@ const parentUpdateList = async function(page: number) {
     <PaginateBox  itemPage={itemPage} parentUpdateList={parentUpdateList} />
 </div>
 <!-- 
-<p>ID : {item.id}</p>
+<a href={`/todo/${item.id}`} class="btn btn-outline-primary">Show
+</a>
+<h3>{item.title}</h3>
 -->

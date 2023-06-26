@@ -49,6 +49,7 @@ const savePost = async function () {
 			title: title?.value,
 			content : content?.value,
 			id: Number(data.id),
+			completed: 0,
 		}
 console.log(item);
 		const json = await HttpCommon.server_post(item, "/todos/update");

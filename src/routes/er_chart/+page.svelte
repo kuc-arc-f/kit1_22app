@@ -49,8 +49,8 @@ const nextPage = function(id) {
 	{#each data.items as item}
 	<div>
 		<h3>{item.title}</h3>
-		<p>ID : {item.id}</p>
-		<button on:click={nextPage(item.id)} class="btn btn-outline-primary" 
+		<span>ID : {item.id}</span>
+		<button on:click={nextPage(item.id)} class="btn btn-outline-primary mx-2" 
 		>Show</button>					
 		<a href={`/er_chart/edit/${item.id}`} class="btn">[ Edit ]
 		</a>

@@ -1,6 +1,6 @@
 <script>
 import Header from './Header.svelte';
-import './styles.css';
+//import './styles.css';
 import { page } from '$app/stores'
 const pathname = $page.data.pathname;
 //console.log("pathname=", pathname);

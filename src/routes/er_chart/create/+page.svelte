@@ -8,10 +8,12 @@ import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
 import { goto } from '$app/navigation';
 import { PUBLIC_API_URL } from '$env/static/public'
+import ModalComplete from '$lib/components/ModalComplete.svelte';
 import HttpCommon from '$lib/HttpCommon';
 /** @type {import('./$types').PageData} */
 export let data;
 console.log(data);
+let messageModal = "";
 
 /**
  * start proc
@@ -21,6 +23,11 @@ console.log(data);
  */ 
  const startProc = async function () {
 	try {
+        MicroModal.init({
+            disableScroll: true,
+            awaitOpenAnimation: true,
+            awaitCloseAnimation: true
+        });		
 	} catch (e) {
       console.error(e);
     }	
@@ -45,16 +52,21 @@ const addPost = async function () {
 			userId:  LibAuth.getUserId(),
 		}
 console.log(item);
-//return;
 		const json = await HttpCommon.server_post(item, '/er_chart/create');
 console.log(json);
 		if(json.ret === 'OK') {
-			goto(`/er_chart`);
+			messageModal = "Success, Save";
+			MicroModal.show('modal-1');			
+//			goto(`/er_chart`);
 		}
 	} catch (e) {
       console.error(e);
       alert("error, add");
     }
+}
+//
+const okFunction = function () {
+    window.location.href = '/er_chart';
 }
 </script>
 
@@ -78,4 +90,5 @@ console.log(json);
 	<hr className="mt-2 mb-2" />
 	<button on:click={addPost} class="btn btn-primary my-2">Add</button>
 	<hr />
+	<ModalComplete bind:message={messageModal} okFunction={okFunction} />
 </div>

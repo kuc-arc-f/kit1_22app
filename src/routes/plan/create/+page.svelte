@@ -4,14 +4,18 @@
 </svelte:head>
 
 <script lang="ts">
+import { onMount } from 'svelte';
 import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
 import Crud from '../Crud';
 import { goto } from '$app/navigation';
 import { PUBLIC_API_URL } from '$env/static/public'
 import HttpCommon from '$lib/HttpCommon';
+import LibCommon from '$lib/LibCommon';
+import ModalComplete from '$lib/components/ModalComplete.svelte';
 /** @type {import('./$types').PageData} */
 export let data;
+let messageModal = "";
 console.log(data);
 
 /**
@@ -20,15 +24,26 @@ console.log(data);
  *
  * @return
  */ 
- const startProc = async function () {
-	try {
-	} catch (e) {
-      console.error(e);
+const startProc = async function () {
+    try {
+        const dt = LibCommon.formatDate(new Date(), 'YYYY-MM-DD');
+    //console.log(dt);
+        const p_date: any = document.querySelector('#p_date');
+        p_date.value = dt;
+        MicroModal.init({
+            disableScroll: true,
+            awaitOpenAnimation: true,
+            awaitCloseAnimation: true
+        });
+    } catch (e) {
+        console.error(e);
     }	
 }
-if(typeof(window) !== "undefined"){
+//if(typeof(window) !== "undefined"){
+//}
+onMount(async () => {
 	startProc();
-}
+});
 /**
  * addPost
  * @param
@@ -38,19 +53,24 @@ if(typeof(window) !== "undefined"){
 const addPost = async function () {
 	try{
 //console.log("PUBLIC_API_URL=", PUBLIC_API_URL);
-//Crud
 		let values = Crud.getInputValues();
 		values.userId = LibAuth.getUserId();
 console.log(values);
 		const json = await HttpCommon.server_post(values, '/plan/create');
 console.log(json);
 		if(json.ret === 'OK') {
-			goto(`/plan`);
+//			goto(`/plan`);
+            messageModal = "Success, Save";
+			MicroModal.show('modal-1');
 		}
 	} catch (e) {
       console.error(e);
       alert("error, add");
     }
+}
+//
+const okFunction = function () {
+    window.location.href = '/plan';
 }
 </script>
 
@@ -76,4 +96,5 @@ console.log(json);
 	<hr className="mt-2 mb-2" />
 	<button on:click={addPost} class="btn btn-primary my-2">Add</button>
 	<hr />
+    <ModalComplete bind:message={messageModal} okFunction={okFunction} />
 </div>

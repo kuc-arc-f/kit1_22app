@@ -7,11 +7,31 @@
 import LibConfig from '$lib/LibConfig';
 import HttpCommon from '$lib/HttpCommon';
 import CrudEdit from '../../CrudEdit';
+import ModalComplete from '$lib/components/ModalComplete.svelte';
 
 /** @type {import('./$types').PageData} */
 export let data: any;
 console.log(data);
-
+let messageModal = ""
+/**
+ * start proc
+ * @param
+ *
+ * @return
+ */ 
+ const startProc = async function () {
+	try {
+        //modal
+        MicroModal.init({
+            disableScroll: true,
+            awaitOpenAnimation: true,
+            awaitCloseAnimation: true
+        });		
+	} catch (e) {
+      console.error(e);
+    }	
+}
+startProc();
 /**
  * savePost
  * @param
@@ -27,13 +47,15 @@ const savePost = async function () {
 			content : content?.value,
 			id: Number(data.id),
 		}
-console.log(item);
+//console.log(item);
 		const json = await HttpCommon.server_post(item, "/er_chart/update");
 		console.log(json);
 		if(json.ret !== 'OK'){
 			throw new Error('Error , update');
 		} else {
-			window.location.href = '/er_chart'
+//			window.location.href = '/er_chart'
+            messageModal = "Success, Save";
+			MicroModal.show('modal-1');
 		}
 	} catch (error) {
 		console.error(error);
@@ -52,13 +74,17 @@ console.log(resulte);
         if(!resulte) {
             throw new Error("Error, delete");
         } else {
-            window.location.href = '/er_chart'
-//			messageModal = "Success, delete";
-//			MicroModal.show('modal-1');	
+//            window.location.href = '/er_chart'
+			messageModal = "Success, delete";
+			MicroModal.show('modal-1');	
         }
 	} catch (error) {
 	    console.error(error);
 	}
+}
+//
+const okFunction = function () {
+    window.location.href = '/er_chart';
 }
 </script>
 
@@ -84,6 +110,7 @@ console.log(resulte);
     <hr class="my-1" />
     <button on:click={deleteItem} class="btn btn-danger my-2">Delete</button>
     <hr />
+    <ModalComplete bind:message={messageModal} okFunction={okFunction} />
 </div>
 <!--
 -->

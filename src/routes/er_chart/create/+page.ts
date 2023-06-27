@@ -12,7 +12,7 @@ type IPostItem = {
 //
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
-console.log("id=", params.id);
+//console.log("id=", params.id);
     return {
       };  
 //    throw error(404, 'Not found');

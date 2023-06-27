@@ -21,36 +21,6 @@ content = data.item.content;
 content = marked.parse(content);
 console.log(content);
 
-/**
-*
-* @param
-*
-* @return
-*/
-
-/**
- * deleteItem
- * @param
- *
- * @return
- */ 
- async function deleteItem(){
-	try {
-		const item = {
-			id: Number(data.id),
-		}
-//console.log(item);
-    const json = await HttpCommon.server_post(item, "/plan/delete");
-console.log(json);
-        if(json.ret !== LibConfig.OK_CODE) {
-            throw new Error("Error, delete");
-        } else {
-            window.location.href = '/plan'
-        }
-	} catch (error) {
-	    console.error(error);
-	}
-}
 </script>
 
 <!-- CSS -->
@@ -65,10 +35,8 @@ console.log(json);
     <hr />
     <pre>{data.item.content}</pre>
     <hr />
-    <button on:click={deleteItem} class="btn btn-danger my-2">Delete</button>
 </div>
 
 <!--
-<hr class="my-1" />
-name: {data.item.title}
+<button on:click={deleteItem} class="btn btn-danger my-2">Delete</button>
 -->

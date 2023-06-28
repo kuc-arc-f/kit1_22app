@@ -58,7 +58,9 @@ console.log(json);
 </style>
 
 <!-- MarkUp -->
-<div class="container my-2">
+<div class="container mb-4">
+    <a href={`/todo`} class="btn btn-outline-primary">Back</a>
+    <hr class="my-2" />
     <h1>{data.item.title}</h1>
     <p>ID: {data.item.id}</p>
     {createdAt}

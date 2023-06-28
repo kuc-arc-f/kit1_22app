@@ -43,7 +43,7 @@ console.log(json);
             throw new Error("Error, delete");
         } else {
             alert("Success, delete");
-//            window.location.href = '/todo'
+            location.href = `/task_project/${data.item.projectId}`;
         }
 	} catch (error) {
 	    console.error(error);

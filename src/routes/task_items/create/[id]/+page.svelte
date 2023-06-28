@@ -9,17 +9,25 @@ let selected = 1;
 import { marked } from 'marked';
 import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
-//import LibCommon from '$lib/LibCommon';
+import LibCommon from '$lib/LibCommon';
 import CrudCreate from "../../CrudCreate";
 import HttpCommon from '$lib/HttpCommon';
 //
 /** @type {import('./$types').PageData} */
 export let data: any, item: any= {}, post_id = 0, content = "", id = "";
+let complete = "";
 //
 console.log("[id=", data.id);
 id = data.id;
 //console.log(data.item);
 
+//
+const startProc= async function() {
+    const dt = LibCommon.formatDate(new Date(), 'YYYY-MM-DD');
+    complete = dt;
+//console.log(complete);
+}
+startProc();
 /**
 *
 * @param
@@ -33,6 +41,7 @@ console.log("#save.selected=", selected);
 console.log(resulte);
         if(resulte) {
             alert("Success, save");
+            location.href = `/task_project/${data.id}`;
         }
     } catch (e) {
         console.error(e);
@@ -49,6 +58,7 @@ console.log(resulte);
 <div class="container my-2">
     <a class="btn btn-outline-primary" href={`/task_project/${data.id}`}
     >Back</a>
+    <hr class="my-1" />
     <h1>TaskCreate</h1>
     projectId: {data.item.id}
     <hr />
@@ -73,7 +83,7 @@ console.log(resulte);
     <div class="col-md-6 form-group">
         <label class="col-sm-12">Scheduled Complete:</label>
         <input type="date"  class="form-control"  id="complete" name="complete"                   
-            required="required" />        
+        value={complete} required="required" />        
     </div>
     <hr />
     <div className="col-md-6 form-group">

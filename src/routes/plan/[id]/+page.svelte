@@ -29,6 +29,8 @@ console.log(content);
 
 <!-- MarkUp -->
 <div class="container my-2">
+    <a href={`/plan`} class="btn btn-outline-primary">Back</a>
+    <hr class="my-2" />
     <h1>{createdAt}</h1>
     <hr />
     <p>Id:{data.id}</p>

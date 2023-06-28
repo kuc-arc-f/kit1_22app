@@ -46,6 +46,7 @@ console.log("#save.selected=", selected);
 console.log(resulte);
         if(resulte) {
             alert("Success, save");
+            location.href = `/task_project/${data.item.projectId}`;
         }
     } catch (e) {
         console.error(e);

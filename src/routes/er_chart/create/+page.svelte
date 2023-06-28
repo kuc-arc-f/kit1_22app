@@ -10,6 +10,7 @@ import { goto } from '$app/navigation';
 import { PUBLIC_API_URL } from '$env/static/public'
 import ModalComplete from '$lib/components/ModalComplete.svelte';
 import HttpCommon from '$lib/HttpCommon';
+
 /** @type {import('./$types').PageData} */
 export let data;
 console.log(data);

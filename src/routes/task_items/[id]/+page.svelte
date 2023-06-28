@@ -24,31 +24,6 @@ console.log(item);
 *
 * @return
 */
-
-/**
- * deleteItem
- * @param
- *
- * @return
- */ 
- async function deleteItem(){
-	try {
-		const item = {
-			id: Number(data.id),
-		}
-//console.log(item);
-    const json = await HttpCommon.server_post(item, '/tasks/delete');
-console.log(json);
-        if(json.ret !== LibConfig.OK_CODE) {
-            throw new Error("Error, delete");
-        } else {
-            alert("Success, delete");
-            location.href = `/task_project/${data.item.projectId}`;
-        }
-	} catch (error) {
-	    console.error(error);
-	}
-}
 </script>
 
 <!-- CSS -->
@@ -62,12 +37,13 @@ console.log(json);
     <h1>{data.item.title}</h1>
     ID: {data.item.id}
     <hr />
-    <p>Scheduled Complete: {item.complete}</p>
+    <p>Complete: {item.complete}</p>
     <hr />
     <pre>{data.item.content}</pre>
     <hr />
-    <button on:click={deleteItem} class="btn btn-danger my-2">Delete</button>
 </div>
 
 <!--
+Scheduled Complete:
+<button on:click={deleteItem} class="btn btn-danger my-2">Delete</button>
 -->

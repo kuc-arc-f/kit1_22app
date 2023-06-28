@@ -49,7 +49,7 @@ startProc();
     <h1>{data.item.name}</h1>
     ID: {data.item.id}
     <hr />
-    <a class="btn btn-primary" href={`/task_items/create/${id}`}>CreateTask</a>
+    <a class="btn btn-primary" href={`/task_items/create/${id}`}>Create</a>
     <hr />
     <div class="row">
         <div class="col-md-4 text-center">None</div>

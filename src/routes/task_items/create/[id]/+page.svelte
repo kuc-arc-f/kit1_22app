@@ -7,6 +7,7 @@
 let selected = 1;
 
 import { marked } from 'marked';
+import ModalComplete from '$lib/components/ModalComplete.svelte';
 import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
 import LibCommon from '$lib/LibCommon';
@@ -15,6 +16,7 @@ import HttpCommon from '$lib/HttpCommon';
 //
 /** @type {import('./$types').PageData} */
 export let data: any, item: any= {}, post_id = 0, content = "", id = "";
+let messageModal = "";
 let complete = "";
 //
 console.log("[id=", data.id);
@@ -25,6 +27,12 @@ id = data.id;
 const startProc= async function() {
     const dt = LibCommon.formatDate(new Date(), 'YYYY-MM-DD');
     complete = dt;
+    //modal
+    MicroModal.init({
+        disableScroll: true,
+        awaitOpenAnimation: true,
+        awaitCloseAnimation: true
+    });    
 //console.log(complete);
 }
 startProc();
@@ -40,13 +48,19 @@ console.log("#save.selected=", selected);
         const resulte = await CrudCreate.addItem(Number(id), selected);
 console.log(resulte);
         if(resulte) {
-            alert("Success, save");
-            location.href = `/task_project/${data.id}`;
+//            alert("Success, save");
+            messageModal = "Success, Save";
+			MicroModal.show('modal-1');
+//            location.href = `/task_project/${data.id}`;
         }
     } catch (e) {
         console.error(e);
         throw new Error('Error , save');
     }    
+}
+//
+const okFunction = function () {
+    window.location.href = `/task_project/${data.id}`;
 }
 </script>
 
@@ -93,6 +107,8 @@ console.log(resulte);
     </div> 
     <hr />
     <button on:click={save} class="btn btn-primary my-2">Save</button>
+    <hr />
+    <ModalComplete bind:message={messageModal} okFunction={okFunction} />
 </div>
 
 <!--

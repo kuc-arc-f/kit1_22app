@@ -13,8 +13,9 @@ import ModalComplete from '$lib/components/ModalComplete.svelte';
 export let data: any;
 console.log(data);
 let messageModal = ""
-const createdAt = LibCommon.converDateString(data.item.createdAt);
-console.log(createdAt);
+//const createdAt = LibCommon.converDateString(data.item.createdAt);
+const p_date = LibCommon.converDateString(data.item.p_date);
+console.log(p_date);
 
 /**
  * start proc
@@ -97,7 +98,7 @@ const okFunction = function () {
 <div class="container my-2">
 	<a href={`/plan`} class="btn">[ Back ]
 	</a>		
-	<h1>Edit: {createdAt}</h1>
+	<h1>Edit: {p_date}</h1>
 	ID: {data.id}
 	<hr class="my-1" />
 	<div class="col-md-12 form-group">

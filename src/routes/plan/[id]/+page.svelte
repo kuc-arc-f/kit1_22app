@@ -14,7 +14,7 @@ import HttpCommon from '$lib/HttpCommon';
 export let data: any, item: any= {}, post_id = 0, content = "";
 //
 console.log("[id=", data.id);
-console.log(data.item);
+const p_date = LibCommon.converDateString(data.item.p_date);
 const createdAt = LibCommon.converDateString(data.item.createdAt);
 console.log(createdAt);
 content = data.item.content;
@@ -31,7 +31,8 @@ console.log(content);
 <div class="container my-2">
     <a href={`/plan`} class="btn btn-outline-primary">Back</a>
     <hr class="my-2" />
-    <h1>{createdAt}</h1>
+    <h1>{p_date}</h1>
+    <p>Create: {createdAt}</p>
     <hr />
     <p>Id:{data.id}</p>
     <hr />

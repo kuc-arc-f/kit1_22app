@@ -1,11 +1,18 @@
 <script lang="ts">
 //import TaskIndex from "../../task_items/CrudIndex";
-export let id, title, status;
+import LibCommon from '$lib/LibCommon';
+export let id, title, status, date;
 let bg_status_color = "";
 
+if(date) {
+  date = LibCommon.converDateString(date);
+} else {
+  date = "";
+}
+console.log(date);
 console.log("id=", id);
-console.log("title=", title);
-console.log("status=", status);
+//console.log("title=", title);
+//console.log("status=", status);
 if(status === '2'){
     bg_status_color = "task_card_bg_blue";
 }else if(status === '3'){
@@ -28,7 +35,7 @@ if(status === '2'){
               <a href={`/task_items/edit/${id}`}><span class="task_title mx-2">[Edit]</span>
               </a>
               <br />
-              <span>date, ID: {id}</span>
+              <span>{date}, ID: {id}</span>
             </div>
           </div>
         </div>

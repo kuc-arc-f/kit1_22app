@@ -15,8 +15,9 @@ const Crud = {
       const title = (<HTMLInputElement>document.querySelector("#name")).value;
       data.name = title;
       
-      const content = (<HTMLInputElement>document.querySelector("#content")).value;
-      data.content = content;
+//      const content = (<HTMLInputElement>document.querySelector("#content")).value;
+//      data.content = content;
+      data.content = "";
     
       return data;
     } catch (e) {

@@ -63,12 +63,14 @@ console.log(json);
 		class="form-control" required>
 	</div>
 	<hr className="mt-2 mb-2" />
+	<button on:click={addPost} class="btn btn-primary my-2">Add</button>
+	<hr />
+</div>
+
+<!--
 	<div className="col-md-6 form-group">
 		<label for="content">content</label>
 		<textarea id="content" name="content" required class="form-control"
 		rows="10" placeholder="markdown input, please"></textarea>
 	</div>
-	<hr className="mt-2 mb-2" />
-	<button on:click={addPost} class="btn btn-primary my-2">Add</button>
-	<hr />
-</div>
+-->

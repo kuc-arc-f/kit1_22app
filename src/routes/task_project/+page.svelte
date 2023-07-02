@@ -35,23 +35,23 @@ startProc();
 
 <div class="container my-2">
 	<h1>project</h1>
-	<p>markdown diplay, OK</p>
-	<hr />
+	<hr class="my-1" />
 	<a href={`/task_project/create`} class="btn btn-primary">Create
 	</a>
-  
-	<hr />
+	<hr class="my-2" />
 	{#each data.items as item}
 	<div>
-		<h3>{item.name}</h3>
-		<p>ID : {item.id}</p>
-		<a href={`/task_project/${item.id}`} class="btn btn-outline-primary">Show
+        <a href={`/task_project/${item.id}`} ><h3>{item.name}</h3>
+        </a>		
+		<span>ID : {item.id}</span>
+		<a href={`/task_project/edit/${item.id}`} class="btn btn-sm btn-outline-primary">Edit
 		</a>
-		<hr />
+		<hr class="my-2" />
 	</div>
 	{/each}	
 </div>
 <!-- 
-		<a href={`/task_project/edit/${item.id}`} class="btn">[ Edit ]
-		</a>					
+<a href={`/task_project/${item.id}`} class="btn btn-outline-primary">Show
+</a>
+<p>markdown diplay, OK</p>
 -->

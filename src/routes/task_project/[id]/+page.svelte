@@ -11,6 +11,7 @@ import IndexRow from "./IndexRow.svelte";
 import { marked } from 'marked';
 import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
+import LibCommon from '$lib/LibCommon';
 import HttpCommon from '$lib/HttpCommon';
 //
 /** @type {import('./$types').PageData} */
@@ -29,13 +30,13 @@ console.log(data.item);
 */
 const startProc= async function() {
     items = await TaskIndex.getList(id);
-    console.log(items);
+console.log(items);
     itemsNone = items.filter(item => (item.status === '1') );
-    console.log(itemsNone);
+//    console.log(itemsNone);
     itemsWorking = items.filter(item => (item.status === '2') );
-    console.log(itemsWorking);
+//    console.log(itemsWorking);
     itemsComplete = items.filter(item => (item.status === '3') );
-    console.log(itemsComplete);
+//    console.log(itemsComplete);
 }
 startProc();
 </script>
@@ -59,7 +60,7 @@ startProc();
     <div class="row">	 
         <div class="col-md-4">
         {#each itemsNone as item}
-            <IndexRow id={item.id} title={item.title} status="1" />
+            <IndexRow id={item.id} title={item.title} status="1" date={item.complete} />
         {/each}
         </div>
         <div class="col-md-4">

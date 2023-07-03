@@ -47,11 +47,14 @@ startProc();
 
 <!-- MarkUp -->
 <div class="container my-2">
+	<a href={`/task_project`} class="btn btn-outline-primary">Back
+	</a>
+	<hr class="my-1" />
     <h1>{data.item.name}</h1>
     ID: {data.item.id}
-    <hr />
+    <hr class="my-1" />
     <a class="btn btn-primary" href={`/task_items/create/${id}`}>Create</a>
-    <hr />
+    <hr class="my-1" />
     <div class="row">
         <div class="col-md-4 text-center">None</div>
         <div class="col-md-4 text-center">Working</div>
@@ -65,12 +68,12 @@ startProc();
         </div>
         <div class="col-md-4">
         {#each itemsWorking as item}
-            <IndexRow id={item.id} title={item.title} status="2" />
+            <IndexRow id={item.id} title={item.title} status="2" date={item.complete}  />
         {/each}
         </div>
         <div class="col-md-4">
         {#each itemsComplete as item}
-            <IndexRow id={item.id} title={item.title} status="3" />
+            <IndexRow id={item.id} title={item.title} status="3" date={item.complete} />
         {/each}
         </div>
     </div>   

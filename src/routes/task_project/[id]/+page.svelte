@@ -13,6 +13,7 @@ import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
 import LibCommon from '$lib/LibCommon';
 import HttpCommon from '$lib/HttpCommon';
+import CrudShow from '../CrudShow';
 //
 /** @type {import('./$types').PageData} */
 export let data: any, item: any= {}, post_id = 0, content = "", id = "";
@@ -30,7 +31,12 @@ console.log(data.item);
 */
 const startProc= async function() {
     items = await TaskIndex.getList(id);
-console.log(items);
+//console.log(items);
+    setStateArray();
+}
+startProc();
+//
+const setStateArray = async function() {
     itemsNone = items.filter(item => (item.status === '1') );
 //    console.log(itemsNone);
     itemsWorking = items.filter(item => (item.status === '2') );
@@ -38,7 +44,30 @@ console.log(items);
     itemsComplete = items.filter(item => (item.status === '3') );
 //    console.log(itemsComplete);
 }
-startProc();
+/**
+*
+* @param
+*
+* @return
+*/
+const clearSearch = async function() {
+    const seachKey = (<HTMLInputElement>document.querySelector("#searchKey"));
+    seachKey.value = "";
+    startProc();
+console.log(items);
+}
+/**
+*
+* @param
+*
+* @return
+*/
+const search = async function() {
+    console.log("search");
+    items = await CrudShow.search(Number(id));
+    setStateArray();
+console.log(items);
+}
 </script>
 
 <!-- CSS -->
@@ -47,13 +76,30 @@ startProc();
 
 <!-- MarkUp -->
 <div class="container my-2">
-	<a href={`/task_project`} class="btn btn-outline-primary">Back
-	</a>
-	<hr class="my-1" />
+    <div class="row">
+        <div class="col-md-6">
+            <a href={`/task_project`} class="btn btn-outline-primary">Back
+            </a>
+        </div>
+        <div class="col-md-6 text-end">
+            <a class="btn btn-primary" href={`/task_items/create/${id}`}>Create</a>
+        </div>
+    </div>
+    <hr class="my-1" />
     <h1>{data.item.name}</h1>
     ID: {data.item.id}
     <hr class="my-1" />
-    <a class="btn btn-primary" href={`/task_items/create/${id}`}>Create</a>
+    <div class="row">
+      <div class="col-md-12 text-end">
+        <button class="btn btn-sm btn-outline-primary" on:click={clearSearch}
+        >Clear</button>
+        <span class="search_key_wrap">
+          <input type="text" size="24" class="mx-2" name="searchKey" id="searchKey" 
+           placeholder="Title search">
+        </span>
+        <button class="btn btn-sm btn-outline-primary" on:click={search}>Search</button>      
+      </div>
+    </div>    
     <hr class="my-1" />
     <div class="row">
         <div class="col-md-4 text-center">None</div>

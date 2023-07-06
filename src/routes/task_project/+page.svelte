@@ -7,6 +7,7 @@
 import { goto } from '$app/navigation';
 import LibAuth from '$lib/LibAuth';
 import HttpCommon from '$lib/HttpCommon';
+import CrudIndex from './CrudIndex';
 
 /** @type {import('./$types').PageData} */
 export let data: any;
@@ -31,13 +32,51 @@ console.log(data);
 }
 console.log("#start: /test");
 startProc();
+/**
+*
+* @param
+*
+* @return
+*/
+const clearSearch = async function() {
+    const seachKey = (<HTMLInputElement>document.querySelector("#searchKey"));
+    seachKey.value = "";
+    startProc();
+//console.log(items);
+}
+/**
+*
+* @param
+*
+* @return
+*/
+const search = async function() {
+    console.log("search");
+    data.items = await CrudIndex.search();
+//console.log(data.items);
+}
 </script>
 
 <div class="container my-2">
-	<h1>project</h1>
+	<div class="row">
+		<div class="col-md-6"><h1>project</h1></div>
+		<div class="col-md-6 text-end">
+			<a href={`/task_project/create`} class="btn btn-primary">Create
+			</a>
+		</div>
+	</div>
 	<hr class="my-1" />
-	<a href={`/task_project/create`} class="btn btn-primary">Create
-	</a>
+    <div class="row">
+      <div class="col-md-12 text-end">
+        <button class="btn btn-sm btn-outline-primary" on:click={clearSearch}
+        >Clear</button>
+        <span class="search_key_wrap">
+          <input type="text" size="24" class="mx-2" name="searchKey" id="searchKey" 
+           placeholder="Title search">
+        </span>
+        <button class="btn btn-sm btn-outline-primary" on:click={search}>Search</button>      
+      </div>
+    </div>	
 	<hr class="my-2" />
 	{#each data.items as item}
 	<div>

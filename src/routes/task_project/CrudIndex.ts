@@ -1,8 +1,33 @@
-import LibCrud from '../../lib/LibCrud';
+//import LibCrud from '../../lib/LibCrud';
 import LibConfig from '../../lib/LibConfig';
 import HttpCommon from '../../lib/HttpCommon';
 //
 const CrudIndex = {
+  /**
+  *
+  * @param
+  *
+  * @return
+  */
+  search :async function (): Promise<any>
+  {
+    try{
+      const seachKey = (<HTMLInputElement>document.querySelector("#searchKey")).value;
+      const postItem = {
+        seachKey: seachKey,
+      }
+//console.log(postItem); 
+      const json = await HttpCommon.server_post(postItem, "/project/search");
+//console.log(json);      
+      let items: any[] = [];
+      items = json.data;
+//console.log(items);
+      return items;
+    } catch (e) {
+      console.error(e);
+      throw new Error("Error, search");
+    } 
+  },
   /**
   * getList
   * @param

@@ -38,10 +38,10 @@ const CrudIndex = {
   {
     try{
       const json = await HttpCommon.server_post({}, "/project/get_list");
-console.log(json);      
+//console.log(json);      
       let items: any[] = [];
       items = json.data;
-console.log(items);
+//console.log(items);
       return items;
     } catch (e) {
       console.error(e);

@@ -1,5 +1,3 @@
-//import LibCrud from '../../lib/LibCrud';
-//import LibConfig from '../../lib/LibConfig';
 import HttpCommon from '$lib/HttpCommon';
 //
 const CrudIndex = {
@@ -14,10 +12,10 @@ const CrudIndex = {
     try{
       const item = {projectId: id}
       const json = await HttpCommon.server_post(item, "/tasks/get_list");      
-console.log(json);      
+//console.log(json);      
       let items: any[] = [];
       items = json.data;
-console.log(items);
+//console.log(items);
       return items;
     } catch (e) {
       console.error(e);

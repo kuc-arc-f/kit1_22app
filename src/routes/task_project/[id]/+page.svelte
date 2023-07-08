@@ -82,7 +82,8 @@ console.log(items);
             </a>
         </div>
         <div class="col-md-6 text-end">
-            <a class="btn btn-primary" href={`/task_items/create/${id}`}>Create</a>
+            <a class="btn btn-primary mx-4" href={`/task_items/create/${id}`}>Create</a>
+            <a class="btn btn-outline-primary" href={`/task_project/export/${id}`}>Export</a>
         </div>
     </div>
     <hr class="my-1" />

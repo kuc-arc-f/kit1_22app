@@ -12,6 +12,7 @@ import LibAuth from '$lib/LibAuth';
 import HttpCommon from '$lib/HttpCommon';
 //import LibCommon from '$lib/LibCommon';
 import IndexRow from './IndexRow.svelte';
+import Export from './Export';
 
 /** @type {import('./$types').PageData} */
 export let data: any;
@@ -31,12 +32,12 @@ const get_items = async function(target_month) {
         weeks = Plan.get_week_items(target_month);
         month_str = target_month.format('YYYY-MM');
         itemsTodos = await CrudIndex.getList(target_month);
-console.log(itemsTodos);
+//console.log(itemsTodos);
         itemsTodos = await Plan.convertDateType(itemsTodos);
 
         const weeksData = Plan.convert_week_array( weeks, itemsTodos ,moment() ) 
         weeks = weeksData;
-console.log(weeks);
+//console.log(weeks);
     } catch (e) {
         console.error(e);
     }   
@@ -80,6 +81,17 @@ const changeAfter = async function () {
         console.error(e);
     } 
 }
+//
+const exportExcel = async function () {
+    try{
+        month_str = month.format('YYYY-MM');
+console.log("month_str=", month_str);
+console.log(itemsTodos);
+        await Export.exportXlsx(itemsTodos);
+    } catch (e) {
+        console.error(e);
+    }    
+}
 </script>
 
 <div class="container my-2">
@@ -94,11 +106,16 @@ const changeAfter = async function () {
             </button>            
         </div>
     </div>
-	<hr />
-	<a href={`/plan/create`} class="btn btn-primary">Create
-	</a>
-  
-	<hr />
+	<hr class="my-1" />
+    <div class="row mt-2">
+        <div class="col-md-6">
+            <a href={`/plan/create`} class="btn btn-primary">Create
+            </a>
+        </div>
+        <div class="col-md-6 text-end">
+            <button class="btn btn-outline-primary" on:click={exportExcel}>Export</button>
+        </div>
+    </div>
     <div class="table_box_wrap mb-4">
         <table class="table table-bordered mt-2">
             <thead>
@@ -122,6 +139,6 @@ const changeAfter = async function () {
         </table>    
     </div>
 </div>
+
 <!-- 
-	
 -->

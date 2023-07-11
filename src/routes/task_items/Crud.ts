@@ -1,5 +1,25 @@
 
 const Crud = {
+  /* statusType */
+  statusType: {
+    none: 1,
+    working: 2,
+    complete: 3,
+  },
+  /**
+   *  convertStatusName
+   * @param
+   *
+   * @return
+   */  
+  convertStatusName: function(code: number) : string
+  {
+    let ret = "";
+    if(code === this.statusType.none) { ret = "None";}
+    if(code === this.statusType.working) { ret = "Working";}
+    if(code === this.statusType.complete) { ret = "Complete";}
+    return ret;
+  },
   /**
    * 
    * @param key: any

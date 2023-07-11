@@ -9,10 +9,9 @@ if(date) {
 } else {
   date = "";
 }
-console.log(date);
-console.log("id=", id);
+//console.log(date);
+//console.log("id=", id);
 //console.log("title=", title);
-//console.log("status=", status);
 if(status === '2'){
     bg_status_color = "task_card_bg_blue";
 }else if(status === '3'){

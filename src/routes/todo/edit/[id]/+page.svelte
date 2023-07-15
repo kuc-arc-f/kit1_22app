@@ -103,8 +103,8 @@ const okFunction = function () {
         <input type="text" name="title" id="title" class="form-control"
 		 value= {data.item.title}  />		
 	</div>
-	<hr className="mt-2 mb-2" />
-	<div className="col-md-6 form-group">
+	<hr class="mt-2 mb-2" />
+	<div class="col-md-6 form-group">
 		<label for="content">content</label>
 		<textarea id="content" name="content" required class="form-control"
 		rows="10" placeholder="markdown input, please">{data.item.content}</textarea>

@@ -132,7 +132,6 @@ console.log(items);
         {/each}
         </div>
     </div>   
-
 </div>
 
 <!--

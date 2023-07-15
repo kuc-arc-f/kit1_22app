@@ -5,6 +5,7 @@
 
 <script lang="ts">
 import { goto } from '$app/navigation';
+import { EditId, itemId } from './stores';
 import CrudIndex from "./CrudIndex";
 import Plan from "./Plan";
 import moment from 'moment'
@@ -12,6 +13,7 @@ import LibAuth from '$lib/LibAuth';
 import HttpCommon from '$lib/HttpCommon';
 //import LibCommon from '$lib/LibCommon';
 import IndexRow from './IndexRow.svelte';
+import ModalShow from "./ModalShow.svelte";
 import Export from './Export';
 
 /** @type {import('./$types').PageData} */
@@ -50,6 +52,7 @@ const get_items = async function(target_month) {
  */ 
  const startProc = async function () {
 	try {
+        itemId.update(n => 0);
         console.log("#startProc");
         month = moment();
         await get_items(month)				
@@ -92,8 +95,15 @@ console.log(itemsTodos);
         console.error(e);
     }    
 }
+//
+const parentShowFunction = function (id: number) {
+console.log("parentShowFunction=", id);
+  itemId.update(n => 0);
+  itemId.update(n => id);
+}
 </script>
 
+<!-- MarkUp -->
 <div class="container my-2">
     <div class = "row mt-2">
         <div class="col-md-6"><h1>Plan: {month_str}</h1></div>
@@ -132,12 +142,14 @@ console.log(itemsTodos);
             <tbody>
             {#each weeks as object, i}
             <tr>
-                <IndexRow object={object.weekItem} />
+                <IndexRow object={object.weekItem} parentShowFunction={parentShowFunction} />
             </tr>
             {/each}            
             </tbody>
         </table>    
     </div>
+    <!-- modal -->
+    <ModalShow />
 </div>
 
 <!-- 

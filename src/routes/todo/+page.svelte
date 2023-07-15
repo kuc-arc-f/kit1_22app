@@ -5,14 +5,19 @@
 
 <script lang="ts">
 import { goto } from '$app/navigation';
+import { EditId, itemId } from './stores';
 import LibAuth from '$lib/LibAuth';
 import HttpCommon from '$lib/HttpCommon';
 import PaginateBox from "./PaginateBox.svelte";
+import ModalShow from "./ModalShow.svelte";
+import ModalEdit from "./ModalEdit.svelte";
 import TodoIndex from "./TodoIndex";
 
 /** @type {import('./$types').PageData} */
 export let data: any;
 let itemPage = 1, items = [], itemsAll = [], perPage: number = 10;
+//let itemId: number = 0;
+//
 items = data.items;
 console.log(data);
 /**
@@ -23,6 +28,8 @@ console.log(data);
 */ 
 const startProc = async function () {
     try {
+        itemId.update(n => 0);
+        EditId.update(n => 0);
         const postItem = {
             userId: LibAuth.getUserId(),
         }		
@@ -63,6 +70,28 @@ const parentUpdateList = async function(page: number) {
   items = await TodoIndex.getPageList(itemsAll, page, perPage);
   console.log(items);
 }
+/**
+*
+* @param
+*
+* @return
+*/ 
+const showItem = async function (id: number) {
+console.log("id=",id);
+  itemId.update(n => 0);
+  itemId.update(n => id);
+}
+/**
+*
+* @param
+*
+* @return
+*/
+const editItem = async function (id: number) {
+console.log("id=",id);
+  EditId.update(n => 0);
+  EditId.update(n => id);
+}
 </script>
 
 <!-- MarkUp -->
@@ -90,18 +119,25 @@ const parentUpdateList = async function(page: number) {
     <hr />
     {#each items as item}
     <div>
-        <a href={`/todo/${item.id}`} ><h3>{item.title}</h3>
-        </a>         
+        <a href="#" on:click={showItem(item.id)} ><h3>{item.title}</h3>
+        </a> 
         <span class="mx-2">ID : {item.id}</span>
-        <a href={`/todo/edit/${item.id}`} class="btn btn-sm btn-outline-primary mx-2">Edit
+        <a href="#" on:click={editItem(item.id)} class="btn btn-sm btn-outline-primary mx-2"
+          >Edit
         </a>					
-        <hr />
+        <hr class="my-1" />
     </div>
     {/each}	
     <PaginateBox  itemPage={itemPage} parentUpdateList={parentUpdateList} />
+    <hr />
+    <ModalShow />
+    <ModalEdit />
 </div>
+
 <!-- 
-<a href={`/todo/${item.id}`} class="btn btn-outline-primary">Show
-</a>
-<h3>{item.title}</h3>
+        <a href={`/todo/edit/${item.id}`} class="btn btn-sm btn-outline-primary mx-2">Edit
+        </a>					
+
+<a href="#" on:click={showItem(item.id)} ><h3>{item.title}</h3>
+</a>     
 -->

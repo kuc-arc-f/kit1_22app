@@ -6,7 +6,7 @@
 
  date    : 2023/06/01
 
- update  : 2023/07/16 
+ update  : 2023/07/16  
  
 ***
 ### Summary
@@ -33,6 +33,15 @@ https://github.com/kuc-arc-f/d1-project8git
 * er-chart
 
 ![img](https://img-static-kuc.netlify.app/img/front_2023/svelte/ss-erchart-0614.png)
+
+***
+* task-Gantt diagrams
+
+![img](https://img-static-kuc.netlify.app/img/front_2023/svelte/ss-gantt10716.png)
+
+* task-list
+
+![img](https://img-static-kuc.netlify.app/img/front_2023/svelte/ss-taskMain-0716.png)
 
 
 ***

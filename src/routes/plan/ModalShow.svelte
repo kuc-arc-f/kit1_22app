@@ -49,6 +49,13 @@ console.log("ModalShow.id=", value);
 <!-- CSS -->
 <style>
 #open_post_show { display: none ;}
+.container .pre_text {
+    border: 1px solid #000;
+    background: #eee;
+    padding: 10px;
+    font-family: BlinkMacSystemFont,"Segoe UI",Roboto;
+    font-size: 1rem;
+}
 </style>
 
 <!-- MarkUp -->
@@ -68,7 +75,7 @@ console.log("ModalShow.id=", value);
                     <p>ID: {item.id}</p>
                     {createdAt}
                     <hr />
-                    <pre>{item.content}</pre>
+                    <pre class="pre_text">{item.content}</pre>
                 </div>
             </div>
             <div class="modal-footer">

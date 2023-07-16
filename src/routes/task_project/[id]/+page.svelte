@@ -70,6 +70,10 @@ const search = async function() {
     setStateArray();
 console.log(items);
 }
+//
+const nextPage = function(path: string) {
+    location.href = path;
+}
 </script>
 
 <!-- CSS -->
@@ -94,7 +98,8 @@ console.log(items);
             ID: {data.item.id}
         </div>
         <div class="col-md-6 text-end p-2">
-            <a class="btn btn-primary mx-0" href={`/task_project/list/${id}`}>List</a>
+            <a class="btn btn-outline-primary mx-0" href="#" on:click={nextPage(`/task_project/gantt/${id}`)}>Gantt</a>
+            <a class="btn btn-outline-primary mx-0" href={`/task_project/list/${id}`}>List</a>
         </div>
     </div>    
     <hr class="my-1" />
@@ -135,8 +140,7 @@ console.log(items);
 </div>
 
 <!--
-<a class="btn btn-outline-primary mx-2" href={`/task_project/${id}`}>Grid</a>
-<h1>{data.item.name}</h1>
 ID: {data.item.id}
+<a class="btn btn-outline-primary mx-0" href={`/task_project/gantt/${id}`}>Gantt</a>
 -->
 

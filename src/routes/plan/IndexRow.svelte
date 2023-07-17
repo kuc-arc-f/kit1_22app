@@ -1,10 +1,15 @@
 <script lang="ts">
-export let object, parentShowFunction;
+export let object, parentShowFunction, parentEditFunction;
 console.log(object);
 //
 const showModal = function (id: number) {
 console.log("showModal= ", id)
     parentShowFunction(id);
+}
+//
+const editModal = function (id: number) {
+console.log("editModal= ", id)
+    parentEditFunction(id);
 }
 
 </script>
@@ -21,9 +26,9 @@ console.log("showModal= ", id)
         <a href="#" on:click={showModal(dayObject.id)}>{dayObject.content}
         </a><br />
         {#if dayObject.id}
-            <a href={`/plan/edit/${dayObject.id}`} class="btn btn-outline-primary btn-sm td_edit"
-            >Edit <i className="far fa-edit"></i>
-            </a>
+            <a href="#" on:click={editModal(dayObject.id)} class="btn btn-outline-primary btn-sm td_edit"
+            >Edit<i className="far fa-edit"></i>
+            </a><br />            
         {/if}        
         <br />
         <br />
@@ -33,9 +38,11 @@ console.log("showModal= ", id)
 <!-- CSS -->
 
 <!--
+<a href={`/plan/edit/${dayObject.id}`} class="btn btn-outline-primary btn-sm td_edit"
+>Edit <i className="far fa-edit"></i>
+</a>
 <button on:click={showModal(dayObject.id)} >[ Show ]</button>
 <br />
 <a href={`/plan/${dayObject.id}`}>{dayObject.content}
 </a>
-<button on:click={showModal(dayObject.id)} >[ Show ]</button>
 -->

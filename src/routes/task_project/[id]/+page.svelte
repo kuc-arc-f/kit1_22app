@@ -4,17 +4,19 @@
 </svelte:head>
 
 <script lang="ts">
+import { onMount } from 'svelte';
 import TaskIndex from "../../task_items/CrudIndex";
 import IndexRow from "./IndexRow.svelte";
 //export let id;
-
-import { marked } from 'marked';
+//import { marked } from 'marked';
+import { EditId, itemId } from './stores';
 import LibConfig from '$lib/LibConfig';
 import LibAuth from '$lib/LibAuth';
 import LibCommon from '$lib/LibCommon';
 import HttpCommon from '$lib/HttpCommon';
 import CrudShow from '../CrudShow';
 import TaskCrud from '../../task_items/Crud';
+import ModalShow from "./ModalShow.svelte";
 //
 /** @type {import('./$types').PageData} */
 export let data: any, item: any= {}, post_id = 0, content = "", id = "";
@@ -32,10 +34,14 @@ console.log(data.item);
 * @return
 */
 const startProc= async function() {
+    itemId.update(n => 0);
     items = await TaskIndex.getList(id);
 //console.log(items);
     setStateArray();
 }
+//
+onMount(async () => {
+});
 startProc();
 //
 const setStateArray = async function() {
@@ -73,6 +79,17 @@ console.log(items);
 //
 const nextPage = function(path: string) {
     location.href = path;
+}
+/**
+*
+* @param
+*
+* @return
+*/ 
+const parentShowFunction = function (id: number) {
+console.log("parentShowFunction=", id);
+  itemId.update(n => 0);
+  itemId.update(n => id);
 }
 </script>
 
@@ -123,20 +140,25 @@ const nextPage = function(path: string) {
     <div class="row">	 
         <div class="col-md-4">
         {#each itemsNone as item}
-            <IndexRow id={item.id} title={item.title} status="1" date={item.complete} />
+            <IndexRow id={item.id} title={item.title} status="1" date={item.complete} 
+            parentShowFunction={parentShowFunction} />
         {/each}
         </div>
         <div class="col-md-4">
         {#each itemsWorking as item}
-            <IndexRow id={item.id} title={item.title} status="2" date={item.complete}  />
+            <IndexRow id={item.id} title={item.title} status="2" date={item.complete} 
+            parentShowFunction={parentShowFunction} />
         {/each}
         </div>
         <div class="col-md-4">
         {#each itemsComplete as item}
-            <IndexRow id={item.id} title={item.title} status="3" date={item.complete} />
+            <IndexRow id={item.id} title={item.title} status="3" date={item.complete}
+            parentShowFunction={parentShowFunction} />
         {/each}
         </div>
-    </div>   
+    </div>
+    <!-- modal -->
+    <ModalShow />   
 </div>
 
 <!--

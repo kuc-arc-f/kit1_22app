@@ -1,7 +1,7 @@
 <script lang="ts">
 //import TaskIndex from "../../task_items/CrudIndex";
 import LibCommon from '$lib/LibCommon';
-export let id, title, status, date;
+export let id, title, status, date, parentShowFunction;
 let bg_status_color = "";
 
 if(date) {
@@ -17,6 +17,11 @@ if(status === '2'){
 }else if(status === '3'){
     bg_status_color = "task_card_bg_gray";
 }
+//
+const showModal = function (id: number) {
+console.log("showModal= ", id)
+    parentShowFunction(id);
+}
 </script>
 
 <!-- MarkUp -->
@@ -29,9 +34,8 @@ if(status === '2'){
               <i class="bi bi-clipboard"></i>
             </div>
             <div class="card_col_body  p-md-0">
-              <a href={`/task_items/${id}`}><span class="task_title fs-5">{title}</span>
-              </a>
-              <br />
+              <a href="#" on:click={showModal(id)}><span class="task_title fs-5">{title}</span>
+              </a><br />              
               <a href={`/task_items/edit/${id}`}><span class="task_title mx-2">[Edit]</span>
               </a>
               <span>{date}, ID: {id}</span>
@@ -46,4 +50,6 @@ if(status === '2'){
 </style>
 
 <!--
+<a href={`/task_items/${id}`}><span class="task_title fs-5">{title}</span>
+</a><br />
 -->

@@ -14,6 +14,7 @@ import HttpCommon from '$lib/HttpCommon';
 //import LibCommon from '$lib/LibCommon';
 import IndexRow from './IndexRow.svelte';
 import ModalShow from "./ModalShow.svelte";
+import ModalEdit from "./ModalEdit.svelte";
 import Export from './Export';
 
 /** @type {import('./$types').PageData} */
@@ -96,6 +97,12 @@ console.log(itemsTodos);
     }    
 }
 //
+const parentEditFunction = function (id: number) {
+console.log("parentEditFunction=", id);
+    EditId.update(n => 0);
+    EditId.update(n => id);
+}
+//
 const parentShowFunction = function (id: number) {
 console.log("parentShowFunction=", id);
   itemId.update(n => 0);
@@ -142,7 +149,8 @@ console.log("parentShowFunction=", id);
             <tbody>
             {#each weeks as object, i}
             <tr>
-                <IndexRow object={object.weekItem} parentShowFunction={parentShowFunction} />
+                <IndexRow object={object.weekItem} parentShowFunction={parentShowFunction}
+                parentEditFunction={parentEditFunction} />
             </tr>
             {/each}            
             </tbody>
@@ -150,6 +158,7 @@ console.log("parentShowFunction=", id);
     </div>
     <!-- modal -->
     <ModalShow />
+    <ModalEdit />
 </div>
 
 <!-- 

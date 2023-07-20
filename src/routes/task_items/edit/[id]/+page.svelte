@@ -32,6 +32,7 @@ const startProc= async function() {
 	task = await CrudEdit.get(Number(id));
     selected = Number(task.status);
     task.complete = LibCommon.converDateString(task.complete);
+    task.start_date = LibCommon.converDateString(task.start_date);
 console.log(task);
     //modal
     MicroModal.init({
@@ -125,6 +126,12 @@ const okFunction = function () {
         <input bind:group={selected} type="radio" name="amount" value={3} 
         class="form-check-input mx-2" />complete
     </label>
+    <hr class="mt-2 mb-2" />
+    <div class="col-md-6 form-group">
+        <label class="col-sm-12">start:</label>
+        <input type="date"  class="form-control"  id="start_date" name="start_date"                   
+        value={task.start_date} required="required" />        
+    </div>    
     <hr class="mt-2 mb-2" />
     <div class="col-md-6 form-group">
         <label class="col-sm-12">Scheduled Complete:</label>

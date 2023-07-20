@@ -38,6 +38,8 @@ const Crud = {
       data.content = content;
       const complete = (<HTMLInputElement>document.querySelector("#complete")).value;
       data.complete = complete;
+      const start_date = (<HTMLInputElement>document.querySelector("#start_date")).value;
+      data.start_date = start_date;
     
       return data;
     } catch (e) {

@@ -11,7 +11,7 @@ import LibAuth from '$lib/LibAuth';
 import LibCommon from '$lib/LibCommon';
 import HttpCommon from '$lib/HttpCommon';
 //
-let id = 0, item: any ={}, createdAt = "", content="";
+let id = 0, item: any ={}, createdAt = "", content="", start_date = "", complete = "";
 /**
 *
 * @param
@@ -29,6 +29,10 @@ console.log(json.data)
         item = json.data;
         createdAt = LibCommon.converDateString(item.createdAt);
 console.log(createdAt);
+        complete = LibCommon.converDateString(item.complete);
+console.log(complete);
+        start_date = LibCommon.converDateString(item.start_date);
+console.log(start_date);
         content = marked.parse(item.content);
 console.log(content);
         const btn = document.getElementById("open_post_show");
@@ -71,8 +75,10 @@ console.log("ModalShow.id=", value);
             </div>
             <div class="modal-body">
                 <p>ID: {item.id}</p>
-                {createdAt}
+                <p>start_date: {start_date}</p>
+                <p>complete: {complete}</p>
                 <hr />
+                {createdAt}
                 <pre class="pre_text">{item.content}</pre>
             </div>
             <div class="modal-footer">

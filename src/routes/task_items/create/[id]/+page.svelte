@@ -17,7 +17,7 @@ import HttpCommon from '$lib/HttpCommon';
 /** @type {import('./$types').PageData} */
 export let data: any, item: any= {}, post_id = 0, content = "", id = "";
 let messageModal = "";
-let complete = "";
+let complete = "", start_date= "";
 //
 console.log("[id=", data.id);
 id = data.id;
@@ -27,6 +27,7 @@ id = data.id;
 const startProc= async function() {
     const dt = LibCommon.formatDate(new Date(), 'YYYY-MM-DD');
     complete = dt;
+    start_date = dt;
     //modal
     MicroModal.init({
         disableScroll: true,
@@ -93,6 +94,12 @@ const okFunction = function () {
         <input bind:group={selected} type="radio" name="amount" value={3} 
         class="form-check-input mx-2" />complete
     </label>
+    <hr className="mt-2 mb-2" />
+    <div class="col-md-6 form-group">
+        <label class="col-sm-12">start:</label>
+        <input type="date"  class="form-control"  id="start_date" name="start_date"                   
+        value={start_date} required="required" />        
+    </div>
     <hr className="mt-2 mb-2" />
     <div class="col-md-6 form-group">
         <label class="col-sm-12">Scheduled Complete:</label>

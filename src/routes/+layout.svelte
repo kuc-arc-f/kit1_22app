@@ -4,15 +4,16 @@ import Header from './Header.svelte';
 import { page } from '$app/stores'
 const pathname = $page.data.pathname;
 //console.log("pathname=", pathname);
-//console.log("data.user", $page.data.user);
+//		location.href = '/login';
+/*
 if( typeof(window) !== "undefined" &&
 	pathname &&	
 	$page.data.pathname !== "/login")
 {
 	if(!$page.data.user) {
-//		location.href = '/login';
 	}
 }
+*/
 </script>
 
 <div class="app">
